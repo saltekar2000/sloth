@@ -3,8 +3,8 @@ This is the core labeltool module.
 """
 import os
 import sys
-from PyQt4.QtGui import QAction
-from PyQt4.QtCore import pyqtSignal, QObject, QModelIndex
+from PyQt5.QtWidgets import QAction
+from PyQt5.QtCore import pyqtSignal, QObject, QModelIndex
 from sloth.annotations.model import AnnotationModel, ImageModelItem, RootModelItem
 from sloth.annotations.container import AnnotationContainerFactory, AnnotationContainer
 from sloth.conf import config
@@ -14,6 +14,12 @@ from sloth import VERSION
 from sloth.core.commands import get_commands
 from sloth.gui import MainWindow
 import logging
+
+try:
+    QString = unicode
+except NameError:
+    # Python 3
+    QString = str
 
 LOG = logging.getLogger(__name__)
 
@@ -109,7 +115,7 @@ class LabelTool(QObject):
                             format='%(asctime)s %(levelname)-8s %(name)-30s %(message)s')  #, datefmt='%H:%M:%S.%m')
 
         # Disable PyQt log messages
-        logging.getLogger("PyQt4").setLevel(logging.WARNING)
+        logging.getLogger("PyQt5").setLevel(logging.WARNING)
 
         # Handle options common for all commands
         # and initialize the labeltool object from

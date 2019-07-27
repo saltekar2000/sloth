@@ -1,7 +1,8 @@
 """This is the AnnotationScene module"""
-from PyQt4.QtGui import QGraphicsScene, QPixmap, QGraphicsPixmapItem, QTransform, QBrush, QStyleOptionGraphicsItem, \
-    QFont, QGraphicsItem, QGraphicsTextItem, QPen, QColor
-from PyQt4.QtCore import pyqtSignal, Qt, QRectF
+from PyQt5.QtGui import QPixmap, QTransform, QBrush, QFont, QPen, QColor
+from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QStyleOptionGraphicsItem, QGraphicsItem, \
+    QGraphicsTextItem
+from PyQt5.QtCore import pyqtSignal, Qt, QRectF
 from sloth.items import Factory, PolygonItem, RectItem, BaseItem
 from sloth.core.exceptions import InvalidArgumentException
 from sloth.annotations.model import AnnotationModelItem

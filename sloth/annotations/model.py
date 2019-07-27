@@ -2,12 +2,13 @@
 The annotationmodel module contains the classes for the AnnotationModel.
 """
 import os.path
+from PyQt5.QtWidgets import QTreeView
 import time
 import logging
 import copy
 from collections import MutableMapping
-from PyQt4.QtGui import QTreeView, QItemSelection, QItemSelectionModel, QSortFilterProxyModel, QBrush
-from PyQt4.QtCore import QModelIndex, QAbstractItemModel, Qt, pyqtSignal, QVariant, QObject
+from PyQt5.QtGui import QBrush
+from PyQt5.QtCore import QModelIndex, QAbstractItemModel, Qt, pyqtSignal, QVariant, QObject, QSortFilterProxyModel, QItemSelection, QItemSelectionModel
 
 LOG = logging.getLogger(__name__)
 
@@ -593,7 +594,7 @@ class KeyValueRowModelItem(ModelItem):
     def setData(self, value, role=Qt.DisplayRole, column=0):
         if column == 1:
             if isinstance(value, QVariant):
-                value = value.toPyObject()
+                value = value
             self._parent[self._key] = value
             return True
         return False
@@ -1020,7 +1021,7 @@ class InterpolateRange(QObject):
                         return False
 
                     test = frawVals[0]
-                    vtype = getStrNumType(test)
+                    vtype = self.getStrNumType(test)
                     if not vtype:
                         LOG.error("Error, unknown type in multi-value label field, neither int nor float, aborting")
                         return False

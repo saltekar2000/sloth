@@ -1,6 +1,8 @@
 import logging
-from PyQt4.QtGui import QAbstractGraphicsShapeItem, QGraphicsItem, QGraphicsTextItem, QPen, QColor, QGraphicsEllipseItem, QPolygonF
-from PyQt4.QtCore import Qt, QRectF, QPointF, QSizeF
+from PyQt5.QtWidgets import (QAbstractGraphicsShapeItem, QGraphicsItem,
+                         QGraphicsTextItem, QGraphicsEllipseItem )
+from PyQt5.QtGui import (QPen, QColor, QPolygonF)
+from PyQt5.QtCore import Qt, QRectF, QPointF, QSizeF
 
 
 LOG = logging.getLogger(__name__)

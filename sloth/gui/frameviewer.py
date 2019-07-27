@@ -1,6 +1,7 @@
 import math
-from PyQt4.QtCore import pyqtSignal, Qt
-from PyQt4.QtGui import QGraphicsView, QPainter, QTransform, QWidget, QHBoxLayout, QSizePolicy, QGridLayout
+from PyQt5.QtWidgets import QGraphicsView, QWidget, QHBoxLayout, QSizePolicy, QGridLayout
+from PyQt5.QtCore import pyqtSignal, Qt
+from PyQt5.QtGui import QPainter, QTransform
 
 try:
     import okapy.videoio
@@ -97,7 +98,7 @@ class GraphicsView(QGraphicsView):
         self.setScaleAbsolute(self.getScale() * factor)
 
     def wheelEvent(self, event):
-        factor = 1.41 ** (event.delta() / 240.0)
+        factor = 1.41 ** (event.angleDelta().y() / 240.0)
         self.setScaleRelative(factor)
 
     def focusInEvent(self, event):
