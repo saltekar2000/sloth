@@ -1,4 +1,4 @@
-from sloth.items.items import *
-from sloth.items.inserters import *
-from sloth.items.factory import Factory
+from .items import PolygonItem, RectItem, BaseItem, PointItem
+from .inserters import RectItemInserter, PointItemInserter, PolygonItemInserter
+from .factory import Factory
 

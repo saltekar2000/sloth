@@ -1,5 +1,5 @@
-from sloth.annotations.container import *
-
+from sloth.annotations.container import AnnotationContainerFactory, PickleContainer, JsonContainer, YamlContainer
+import os
 
 class MockupContainer:
     pass

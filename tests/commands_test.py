@@ -1,4 +1,4 @@
-from sloth.core.commands import *
+from sloth.core.commands import MergeFilesCommand, AnnotationContainerFactory
 
 
 def test_merge_command_same_images():

@@ -3,9 +3,9 @@ This is the core labeltool module.
 """
 import os
 import sys
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
-from sloth.annotations.model import *
+from PyQt4.QtGui import QAction
+from PyQt4.QtCore import pyqtSignal, QObject, QModelIndex
+from sloth.annotations.model import AnnotationModel, ImageModelItem, RootModelItem
 from sloth.annotations.container import AnnotationContainerFactory, AnnotationContainer
 from sloth.conf import config
 from sloth.core.cli import LaxOptionParser, BaseCommand

@@ -1,6 +1,6 @@
 import sys
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+from PyQt4.QtGui import QGroupBox, QButtonGroup, QPushButton, QWidget, QVBoxLayout, QShortcut, QKeySequence, QApplication
+from PyQt4.QtCore import pyqtSignal, Qt
 from sloth.gui.floatinglayout import FloatingLayout
 import logging
 

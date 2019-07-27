@@ -1,5 +1,5 @@
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+from PyQt4.QtGui import QLabel, QMenu, QWidget, QHBoxLayout, QPushButton, QAction, QTextDocument, QApplication, QClipboard
+from PyQt4.QtCore import Qt, pyqtSlot
 
 
 class Label(QLabel):

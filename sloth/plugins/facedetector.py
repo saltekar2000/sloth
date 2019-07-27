@@ -1,5 +1,5 @@
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+from PyQt4.QtGui import QAction, QProgressDialog
+from PyQt4.QtCore import QThread, pyqtSignal, QObject, Qt
 from sloth.annotations.model import ImageModelItem
 from okapy import BinaryPatternFaceDetector
 

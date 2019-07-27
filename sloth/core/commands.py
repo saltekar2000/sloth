@@ -1,9 +1,10 @@
+import os
 import sys
 import sloth
 import shutil
 from pprint import pprint
 from sloth.core.cli import BaseCommand, CommandError
-from sloth.annotations.container import *
+#from sloth.annotations.container import *
 from optparse import make_option
 from operator import itemgetter
 import logging

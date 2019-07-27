@@ -1,6 +1,7 @@
 import math
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt4.QtCore import pyqtSignal, Qt
+from PyQt4.QtGui import QGraphicsView, QPainter, QTransform, QWidget, QHBoxLayout, QSizePolicy, QGridLayout
+
 try:
     import okapy.videoio
 except ImportError:

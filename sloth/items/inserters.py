@@ -1,6 +1,6 @@
 import math
-from PyQt4.QtGui import *
-from PyQt4.Qt import *
+from PyQt4.QtGui import QGraphicsEllipseItem, QPen, QGraphicsRectItem, QGraphicsItemGroup, QGraphicsLineItem, QGraphicsPolygonItem, QPolygonF
+from PyQt4.QtCore import QObject, pyqtSignal, Qt, QRectF
 
 
 class ItemInserter(QObject):
