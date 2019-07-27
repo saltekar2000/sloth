@@ -5,7 +5,7 @@ import fnmatch
 from PyQt4.QtGui import QMainWindow, QSizePolicy, QWidget, QVBoxLayout, QAction,\
         QKeySequence, QLabel, QItemSelectionModel, QMessageBox, QFileDialog, QFrame, \
         QDockWidget, QProgressBar, QProgressDialog
-from PyQt4.QtCore import SIGNAL, QSettings, QSize, QPoint, QVariant, QFileInfo, QTimer, pyqtSignal, QObject
+from PyQt4.QtCore import QSettings, QSize, QPoint, QVariant, QFileInfo, QTimer, pyqtSignal, QObject
 import PyQt4.uic as uic
 from sloth.gui import qrc_icons  # needed for toolbar icons
 from sloth.gui.propertyeditor import PropertyEditor
