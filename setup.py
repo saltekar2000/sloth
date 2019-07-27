@@ -28,7 +28,7 @@ def fullsplit(path, result=None):
         return result
     return fullsplit(head, [tail] + result)
 
-# Tell distutils to put the data_files in platform-specific installation
+# Tell distutils to put the data files in platform-specific installation
 # locations. See here for an explanation:
 # http://groups.google.com/group/comp.lang.python/browse_thread/thread/35ec7b2fed36eaec/2105ee4d9e8042cb
 for scheme in INSTALL_SCHEMES.values():
@@ -36,22 +36,23 @@ for scheme in INSTALL_SCHEMES.values():
 
 # Compile the list of packages available, because distutils doesn't have
 # an easy way to do this.
-packages, data_files = [], []
-root_dir = os.path.dirname(__file__)
-if root_dir != '':
-    os.chdir(root_dir)
-sloth_dir = 'sloth'
+PACKAGES, DATA_FILES = [], []
+ROOT_DIR = os.path.dirname(__file__)
+if ROOT_DIR != '':
+    os.chdir(ROOT_DIR)
+SLOTH_DIR = 'sloth'
 
-for dirpath, dirnames, filenames in os.walk(sloth_dir):
+for dirpath, dirnames, filenames in os.walk(SLOTH_DIR):
     # Ignore dirnames that start with '.'
     for i, dirname in enumerate(dirnames):
-        if dirname.startswith('.'): del dirnames[i]
+        if dirname.startswith('.'):
+            del dirnames[i]
     if '__init__.py' in filenames:
-        packages.append('.'.join(fullsplit(dirpath)))
+        PACKAGES.append('.'.join(fullsplit(dirpath)))
         if 'labeltool.ui' in filenames:
-            data_files.append([dirpath, [os.path.join(dirpath, 'labeltool.ui')]])
+            DATA_FILES.append([dirpath, [os.path.join(dirpath, 'labeltool.ui')]])
     elif filenames:
-        data_files.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
+        DATA_FILES.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
 
 setup(name='sloth',
       version=sloth.VERSION,
@@ -59,7 +60,7 @@ setup(name='sloth',
       author='CV:HCI Research Group',
       url='http://sloth.readthedocs.org/',
       requires=['importlib', 'PyQt5', 'numpy'],
-      packages=packages,
-      data_files=data_files,
+      packages=PACKAGES,
+      data_files=DATA_FILES,
       scripts=['sloth/bin/sloth']
-)
+     )
