@@ -64,15 +64,17 @@ class BackgroundLoader(QObject):
 
 class MainWindow(QMainWindow):
     def __init__(self, labeltool, parent=None):
-        QMainWindow.__init__(self, parent)
-
+        try:
+            QMainWindow.__init__(self, parent)
+        except:
+            print('QMainWindow:bad init')
         self.idletimer = QTimer()
         self.loader = None
 
         self.labeltool = labeltool
         self.setupGui()
         self.loadApplicationSettings()
-        self.onAnnotationsLoaded()
+        #self.onAnnotationsLoaded()  # uncommenting crashes on Anaconda
 
     # Slots
     def onPluginLoaded(self, action):
@@ -228,6 +230,7 @@ class MainWindow(QMainWindow):
     ### GUI/Application setup
     ###___________________________________________________________________________________________
     def setupGui(self):
+        print('setupGui')
         self.ui = uic.loadUi(os.path.join(GUIDIR, "labeltool.ui"), self)
 
         # get inserters and items from labels
