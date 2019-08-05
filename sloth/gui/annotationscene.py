@@ -354,7 +354,7 @@ class AnnotationScene(QGraphicsScene):
                 # and thus removing the parent will also remove the child
                 if item.parentItem() is not None:
                     continue
-                if item is not None and self.item.scene() is not None:
+                if item is not None and item.scene() is not None:
                     self.removeItem(item)
 
     def rowsRemoved(self, index, first, last):

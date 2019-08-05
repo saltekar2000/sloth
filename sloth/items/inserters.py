@@ -208,7 +208,7 @@ class SequenceItemInserter(ItemInserter):
 
     def _cleanup(self):
         for item in self._items:
-            if item is not None and self.item.scene() is not None:
+            if item is not None and item.scene() is not None:
                 self._scene.removeItem(item)
         self._items = []
         self._scene.clearMessage()
