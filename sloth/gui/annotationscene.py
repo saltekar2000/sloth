@@ -171,7 +171,8 @@ class AnnotationScene(QGraphicsScene):
         # reference to the item somewhere else (e.g. in an inserter)
         for item in self.items():
             if item.parentItem() is None:
-                self.removeItem(item)
+                if item is not None and item.scene() is not None:
+                    self.removeItem(item)
         self._scene_item = None
 
     def addItem(self, item):
@@ -254,7 +255,8 @@ class AnnotationScene(QGraphicsScene):
         scene_items = self.selectedItems()
         if self._inserter is None or len(scene_items) > 0:
             items = [item.modelItem() for item in scene_items]
-            self._labeltool.propertyeditor().startEditMode(items)
+            if self._labeltool.propertyeditor() is not None:
+                self._labeltool.propertyeditor().startEditMode(items)
 
     #
     # key event handlers
@@ -352,7 +354,8 @@ class AnnotationScene(QGraphicsScene):
                 # and thus removing the parent will also remove the child
                 if item.parentItem() is not None:
                     continue
-                self.removeItem(item)
+                if item is not None and self.item.scene() is not None:
+                    self.removeItem(item)
 
     def rowsRemoved(self, index, first, last):
         pass

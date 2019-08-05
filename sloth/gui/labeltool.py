@@ -74,7 +74,7 @@ class MainWindow(QMainWindow):
         self.labeltool = labeltool
         self.setupGui()
         self.loadApplicationSettings()
-        #self.onAnnotationsLoaded()  # uncommenting crashes on Anaconda
+        self.onAnnotationsLoaded()  # uncommenting crashes on Anaconda
 
     # Slots
     def onPluginLoaded(self, action):
@@ -230,7 +230,6 @@ class MainWindow(QMainWindow):
     ### GUI/Application setup
     ###___________________________________________________________________________________________
     def setupGui(self):
-        print('setupGui')
         self.ui = uic.loadUi(os.path.join(GUIDIR, "labeltool.ui"), self)
 
         # get inserters and items from labels

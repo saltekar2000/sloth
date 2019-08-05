@@ -93,7 +93,7 @@ class RectItemInserter(ItemInserter):
 
     def mousePressEvent(self, event, image_item):
         self._aiming = False
-        if self._helpLines is not None:
+        if self._helpLines is not None and self._helpLines.scene() is not None:
             self._scene.removeItem(self._helpLines)
             self._helpLines = None
 
@@ -106,7 +106,7 @@ class RectItemInserter(ItemInserter):
 
     def mouseMoveEvent(self, event, image_item):
         if self._aiming:
-            if self._helpLines is not None:
+            if self._helpLines is not None and self._helpLines.scene() is not None:
                 self._scene.removeItem(self._helpLines)
 
             self._helpLines = QGraphicsItemGroup()
@@ -142,7 +142,8 @@ class RectItemInserter(ItemInserter):
                 self._ann.update(self._default_properties)
                 if self._commit:
                     image_item.addAnnotation(self._ann)
-            self._scene.removeItem(self._item)
+            if self._item is not None and self._item.scene() is not None:
+                self._scene.removeItem(self._item)
             self.annotationFinished.emit()
             self._init_pos = None
             self._item = None
@@ -155,11 +156,11 @@ class RectItemInserter(ItemInserter):
         return True
 
     def abort(self):
-        if self._helpLines is not None:
+        if self._helpLines is not None and self._helpLines.scene() is not None:
             self._scene.removeItem(self._helpLines)
             self._helpLines = None
 
-        if self._item is not None:
+        if self._item is not None and self._item.scene() is not None:
             self._scene.removeItem(self._item)
             self._item = None
             self._init_pos = None
@@ -207,7 +208,7 @@ class SequenceItemInserter(ItemInserter):
 
     def _cleanup(self):
         for item in self._items:
-            if item.scene() is not None:
+            if item is not None and self.item.scene() is not None:
                 self._scene.removeItem(item)
         self._items = []
         self._scene.clearMessage()
@@ -374,7 +375,8 @@ class PolygonItemInserter(ItemInserter):
         self._updateAnnotation()
         if self._commit:
             image_item.addAnnotation(self._ann)
-        self._scene.removeItem(self._item)
+        if self._item is not None and self._item.scene() is not None:
+            self._scene.removeItem(self._item)
         self.annotationFinished.emit()
         self._item = None
         self._scene.clearMessage()
@@ -432,7 +434,7 @@ class PolygonItemInserter(ItemInserter):
             self._removeLastPointAndFinish(image_item)
 
     def abort(self):
-        if self._item is not None:
+        if self._item is not None and self._item.scene() is not None:
             self._scene.removeItem(self._item)
             self._item = None
             self._scene.clearMessage()
